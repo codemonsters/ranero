@@ -8,7 +8,7 @@
 3. Añadimos una nueva "run configuration" de tipo "Application":
     * Name: desktop
     * Main Class: es.codemonsters.ranero.desktop.DesktopLauncher
-    * android/assets
+    * Working Directory: android/assets
     * Use classpath of module: desktop
 
 ### Software necesario
