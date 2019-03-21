@@ -3,6 +3,14 @@
 
 ## Preparación del entorno de desarrollo
 
+1. Importamos el proyecto seleccionando la carpeta principal donde se clonó el repositorio
+2. Ojo: no actualizamos el plugin de Gradle a la versión 4.x (incompatibilidad actual con LibGDX)
+3. Añadimos una nueva "run configuration" de tipo "Application":
+    * Name: desktop
+    * Main Class: es.codemonsters.ranero.desktop.DesktopLauncher
+    * android/assets
+    * Use classpath of module: desktop
+
 ### Software necesario
 
 Instalamos lo siguiente:
