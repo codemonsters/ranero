@@ -35,7 +35,7 @@ public class MenuScreen implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         // Fuente obtenida de https://www.fontsquirrel.com/fonts/list/classification/comic, Comic Relief
         if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
-            System.out.println("SPACIO");
+            game.setScreen(new GameScreen(game));
         }
         game.fontBig.draw(game.batch, "RANERO", 430f, 600f);
 
