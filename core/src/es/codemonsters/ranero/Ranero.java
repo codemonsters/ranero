@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+import es.codemonsters.ranero.screens.GameScreen;
 import es.codemonsters.ranero.screens.MenuScreen;
 
 public class Ranero extends Game {
@@ -19,7 +20,7 @@ public class Ranero extends Game {
 	public void create() {
 		batch = new SpriteBatch();
 		font = new BitmapFont();	//Use LibGDX's default Arial font.
-		this.setScreen(new MenuScreen(this));
+		this.setScreen(new GameScreen(this));
 	}
 
 	@Override
