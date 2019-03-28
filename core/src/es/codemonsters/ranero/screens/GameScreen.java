@@ -32,7 +32,7 @@ public class GameScreen implements Screen {
         batch = new SpriteBatch();
         raneroSpriteSheet = new Texture("raneroSpriteSheet.png");
 
-        ranaTextureJ1 = new TextureRegion(raneroSpriteSheet, )
+        ranaTextureJ1 = new TextureRegion(raneroSpriteSheet, 15, 18, 12, 13);
 
         jugador1 = new Sprite(ranaTextureJ1);
         //jugador2 = new Sprite();
@@ -49,8 +49,10 @@ public class GameScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        game.batch.begin();
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        game.batch.begin();
+
+        jugador1.draw(game.batch);
         game.batch.end();
 
     }
@@ -77,6 +79,8 @@ public class GameScreen implements Screen {
 
     @Override
     public void dispose() {
+        batch.dispose();
+        raneroSpriteSheet.dispose();
 
     }
 }
