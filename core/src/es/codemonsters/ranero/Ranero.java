@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 
+import es.codemonsters.ranero.screens.GameScreen;
 import es.codemonsters.ranero.screens.MenuScreen;
 import sun.font.TrueTypeFont;
 
