@@ -20,7 +20,8 @@ public class GameScreen implements Screen {
     private Texture raneroSpriteSheet;
     private Sprite jugador1;
     private TextureRegion ranaTextureJ1;
-    //private Sprite jugador2;
+    private TextureRegion ranaTextureJ2;
+    private Sprite jugador2;
 
 
     public GameScreen(final Ranero game){
@@ -33,11 +34,12 @@ public class GameScreen implements Screen {
         raneroSpriteSheet = new Texture("raneroSpriteSheet.png");
 
         ranaTextureJ1 = new TextureRegion(raneroSpriteSheet, 15, 18, 12, 13);
+        ranaTextureJ2 = new TextureRegion(raneroSpriteSheet, 15, 50, 12, 13);
 
         jugador1 = new Sprite(ranaTextureJ1);
-        //jugador2 = new Sprite();
-        jugador1.setPosition(100, 100);
-        //jugador2. setPosition(1500, 100);
+        jugador1.setPosition(100, 250);
+        jugador2 = new Sprite(ranaTextureJ2);
+        jugador2.setPosition(500, 250);
 
 
     }
@@ -50,9 +52,11 @@ public class GameScreen implements Screen {
     @Override
     public void render(float delta) {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        jugador1.setRotation(270);
+        jugador2.setRotation(90);
         game.batch.begin();
-
         jugador1.draw(game.batch);
+        jugador2.draw(game.batch);
         game.batch.end();
 
     }
