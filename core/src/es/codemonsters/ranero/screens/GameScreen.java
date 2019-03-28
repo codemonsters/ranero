@@ -12,7 +12,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import es.codemonsters.ranero.Ranero;
 
 public class GameScreen implements Screen {
-    final Ranero game;
+    private final Ranero game;
 
     private OrthographicCamera camera;
 
