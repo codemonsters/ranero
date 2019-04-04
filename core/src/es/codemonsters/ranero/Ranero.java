@@ -1,18 +1,14 @@
 package es.codemonsters.ranero;
 
-import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 
-import es.codemonsters.ranero.screens.GameScreen;
+import es.codemonsters.ranero.GameObject.RanaJugador;
 import es.codemonsters.ranero.screens.MenuScreen;
-import sun.font.TrueTypeFont;
 
 public class Ranero extends Game {
 	public SpriteBatch batch;
@@ -22,6 +18,8 @@ public class Ranero extends Game {
 	FreeTypeFontGenerator.FreeTypeFontParameter parameter;
 
 
+	public RanaJugador ranaJugador1 = new RanaJugador();
+	public RanaJugador ranaJugador2 = new RanaJugador();
 
 	@Override
 	public void create() {
@@ -40,6 +38,8 @@ public class Ranero extends Game {
 		fontMedium.setColor(Color.BLACK);
 		// Ahora utiliza freetype font = new BitmapFont();	//Use LibGDX's default Arial font.
 		this.setScreen(new MenuScreen(this)); // fuente en el constructor para mayor facilidad en caso de cambiar la fuente.
+		MovimientoJugador inputProcessor = new MovimientoJugador();
+		Gdx.input.setInputProcessor(inputProcessor);
 	}
 
 	@Override
