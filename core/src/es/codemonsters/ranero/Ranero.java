@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 
-import es.codemonsters.ranero.gameobjects.RanaJugador;
 import es.codemonsters.ranero.screens.MenuScreen;
 
 public class Ranero extends Game {
@@ -16,10 +15,6 @@ public class Ranero extends Game {
 	public BitmapFont fontMedium;
 	FreeTypeFontGenerator generator;
 	FreeTypeFontGenerator.FreeTypeFontParameter parameter;
-
-
-	public RanaJugador ranaJugador1 = new RanaJugador();
-	public RanaJugador ranaJugador2 = new RanaJugador();
 
 	@Override
 	public void create() {
