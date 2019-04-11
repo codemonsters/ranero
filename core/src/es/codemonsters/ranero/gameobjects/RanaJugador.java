@@ -1,4 +1,6 @@
-package es.codemonsters.ranero.GameObject;
+package es.codemonsters.ranero.gameobjects;
+
+import es.codemonsters.ranero.gameobjects.GameObject;
 
 public class RanaJugador extends GameObject {
 
