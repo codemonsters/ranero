@@ -8,21 +8,27 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.viewport.FitViewport;
 
 import es.codemonsters.ranero.Ranero;
+import es.codemonsters.ranero.gameobjects.Player;
 
 public class GameScreen implements Screen {
+
+    public static final int ANCHO_DEL_MUNDO = 400;
+    public static final int ALTO_DEL_MUNDO = 300;
+
     private final Ranero game;
 
     private OrthographicCamera camera;
 
     private SpriteBatch batch;
     private Texture raneroSpriteSheet;
-    private Sprite jugador1;
     private TextureRegion ranaTextureJ1;
     private TextureRegion ranaTextureJ2;
-    private Sprite jugador2;
-
+    private Player jugador1, jugador2;
+    private Stage stage;
 
     public GameScreen(final Ranero game){
         this.game = game;
@@ -36,12 +42,21 @@ public class GameScreen implements Screen {
         ranaTextureJ1 = new TextureRegion(raneroSpriteSheet, 15, 18, 12, 13);
         ranaTextureJ2 = new TextureRegion(raneroSpriteSheet, 15, 50, 12, 13);
 
-        jugador1 = new Sprite(ranaTextureJ1);
+        jugador1 = new Player(ranaTextureJ1);
         jugador1.setPosition(100, 250);
-        jugador2 = new Sprite(ranaTextureJ2);
+        jugador2 = new Player(ranaTextureJ2);
         jugador2.setPosition(500, 250);
+        resetLevel();
 
+    }
 
+    public void resetLevel() {
+        if (stage != null) {
+            stage.dispose();
+        }
+        stage = new Stage(new FitViewport(ANCHO_DEL_MUNDO, ALTO_DEL_MUNDO));
+        stage.addActor(jugador1);
+        stage.addActor(jugador1);
     }
 
     @Override
@@ -50,15 +65,19 @@ public class GameScreen implements Screen {
     }
 
     @Override
-    public void render(float delta) {
+    public void render(float dt) {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+        stage.act(dt);
+        stage.draw();
+        /*
         jugador1.setRotation(270);
         jugador2.setRotation(90);
         game.batch.begin();
         jugador1.draw(game.batch);
         jugador2.draw(game.batch);
         game.batch.end();
-
+        */
     }
 
     @Override
