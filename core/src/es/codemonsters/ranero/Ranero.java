@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 
-import es.codemonsters.ranero.GameObject.RanaJugador;
+import es.codemonsters.ranero.gameobjects.RanaJugador;
 import es.codemonsters.ranero.screens.MenuScreen;
 
 public class Ranero extends Game {
