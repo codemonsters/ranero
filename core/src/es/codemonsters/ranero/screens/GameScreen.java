@@ -1,6 +1,9 @@
 package es.codemonsters.ranero.screens;
 
+import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -14,7 +17,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import es.codemonsters.ranero.Ranero;
 import es.codemonsters.ranero.gameobjects.Player;
 
-public class GameScreen implements Screen {
+public class GameScreen implements Screen, InputProcessor {
 
     public static final int ANCHO_DEL_MUNDO = 400;
     public static final int ALTO_DEL_MUNDO = 300;
@@ -46,6 +49,8 @@ public class GameScreen implements Screen {
         jugador1.setPosition(100, 250);
         jugador2 = new Player(ranaTextureJ2);
         jugador2.setPosition(500, 250);
+        Gdx.input.setInputProcessor(this);
+        Gdx.app.setLogLevel(Application.LOG_DEBUG);
         resetLevel();
 
     }
@@ -105,5 +110,62 @@ public class GameScreen implements Screen {
         batch.dispose();
         raneroSpriteSheet.dispose();
 
+    }
+
+    @Override
+    public boolean keyDown(int keycode) {
+        if (keycode == Input.Keys.RIGHT) { // flechas de dirección
+            Gdx.app.debug("GameScreen", "keyDown: FLECHA DERECHA");
+        } else if (keycode == Input.Keys.UP) {
+            Gdx.app.debug("GameScreen", "keyDown: FLECHA ARRIBA");
+        } else if (keycode == Input.Keys.LEFT) {
+            Gdx.app.debug("GameScreen", "keyDown: FLECHA IZQUIERDA");
+        } else if (keycode == Input.Keys.DOWN) {
+            Gdx.app.debug("GameScreen", "keyDown: FLECHA ABAJO");
+        } else if (keycode == Input.Keys.W) { // ahora las letras
+            Gdx.app.debug("GameScreen", "keyDown: W");
+        } else if (keycode == Input.Keys.A) {
+            Gdx.app.debug("GameScreen", "keyDown: A");
+        } else if (keycode == Input.Keys.S) {
+            Gdx.app.debug("GameScreen", "keyDown: S");
+        } else if (keycode == Input.Keys.D) {
+            Gdx.app.debug("GameScreen", "keyDown: D");
+        }
+        return true;
+    }
+
+    @Override
+    public boolean keyUp(int keycode) {
+        return false;
+    }
+
+    @Override
+    public boolean keyTyped(char character) {
+        return false;
+    }
+
+    @Override
+    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+        return false;
+    }
+
+    @Override
+    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+        return false;
+    }
+
+    @Override
+    public boolean touchDragged(int screenX, int screenY, int pointer) {
+        return false;
+    }
+
+    @Override
+    public boolean mouseMoved(int screenX, int screenY) {
+        return false;
+    }
+
+    @Override
+    public boolean scrolled(int amount) {
+        return false;
     }
 }
