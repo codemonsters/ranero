@@ -8,7 +8,6 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -34,6 +33,8 @@ public class GameScreen implements Screen, InputProcessor {
     private Stage stage;
 
     public GameScreen(final Ranero game){
+        stage = new Stage(new FitViewport(100, 100));
+
         this.game = game;
         camera = new OrthographicCamera();
         camera.setToOrtho(false,800, 480);
@@ -116,27 +117,60 @@ public class GameScreen implements Screen, InputProcessor {
     public boolean keyDown(int keycode) {
         if (keycode == Input.Keys.RIGHT) { // flechas de dirección
             Gdx.app.debug("GameScreen", "keyDown: FLECHA DERECHA");
+            jugador1.right(true);
         } else if (keycode == Input.Keys.UP) {
             Gdx.app.debug("GameScreen", "keyDown: FLECHA ARRIBA");
+            jugador1.up(true);
         } else if (keycode == Input.Keys.LEFT) {
             Gdx.app.debug("GameScreen", "keyDown: FLECHA IZQUIERDA");
+            jugador1.left(true);
         } else if (keycode == Input.Keys.DOWN) {
             Gdx.app.debug("GameScreen", "keyDown: FLECHA ABAJO");
+            jugador1.down(true);
         } else if (keycode == Input.Keys.W) { // ahora las letras
             Gdx.app.debug("GameScreen", "keyDown: W");
+            jugador2.up(true);
         } else if (keycode == Input.Keys.A) {
             Gdx.app.debug("GameScreen", "keyDown: A");
+            jugador2.left(true);
         } else if (keycode == Input.Keys.S) {
             Gdx.app.debug("GameScreen", "keyDown: S");
+            jugador2.down(true);
         } else if (keycode == Input.Keys.D) {
             Gdx.app.debug("GameScreen", "keyDown: D");
+            jugador2.right(true);
         }
         return true;
     }
 
     @Override
     public boolean keyUp(int keycode) {
-        return false;
+        if (keycode == Input.Keys.RIGHT) { // flechas de dirección
+            Gdx.app.debug("GameScreen", "keyDown: FLECHA DERECHA");
+            jugador1.right(false);
+        } else if (keycode == Input.Keys.UP) {
+            Gdx.app.debug("GameScreen", "keyDown: FLECHA ARRIBA");
+            jugador1.up(false);
+        } else if (keycode == Input.Keys.LEFT) {
+            Gdx.app.debug("GameScreen", "keyDown: FLECHA IZQUIERDA");
+            jugador1.left(false);
+        } else if (keycode == Input.Keys.DOWN) {
+            Gdx.app.debug("GameScreen", "keyDown: FLECHA ABAJO");
+            jugador1.down(false);
+        } else if (keycode == Input.Keys.W) { // ahora las letras
+            Gdx.app.debug("GameScreen", "keyDown: W");
+            jugador2.up(false);
+        } else if (keycode == Input.Keys.A) {
+            Gdx.app.debug("GameScreen", "keyDown: A");
+            jugador2.left(false);
+        } else if (keycode == Input.Keys.S) {
+            Gdx.app.debug("GameScreen", "keyDown: S");
+            jugador2.down(false);
+        } else if (keycode == Input.Keys.D) {
+            Gdx.app.debug("GameScreen", "keyDown: D");
+            jugador2.right(false);
+        }
+        return true;
     }
 
     @Override
