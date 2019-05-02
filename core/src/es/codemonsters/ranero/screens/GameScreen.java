@@ -93,7 +93,7 @@ public class GameScreen implements Screen, InputProcessor {
 
     @Override
     public void resize(int width, int height) {
-
+        stage.getViewport().update(width, height, true);
     }
 
     @Override
@@ -115,6 +115,7 @@ public class GameScreen implements Screen, InputProcessor {
     public void dispose() {
         batch.dispose();
         raneroSpriteSheet.dispose();
+        stage.dispose();
 
     }
 
