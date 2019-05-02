@@ -1,7 +1,11 @@
 package es.codemonsters.ranero.gameobjects;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.dongbat.jbump.CollisionFilter;
+import com.dongbat.jbump.Item;
+import com.dongbat.jbump.World;
 
 public class Player extends GameObject {
 
@@ -11,9 +15,16 @@ public class Player extends GameObject {
     private TextureRegion regionTextura;
     private boolean quiereMoverseIzquierda, quiereMoverseDerecha, quiereMoverseArriba, quiereMoverseAbajo;
 
+    private World world;
+    private Item<GameObject> item;
 
-    public Player(TextureRegion regionTextura) {
+
+    public Player(TextureRegion regionTextura, float x, float y, World world) {
         this.regionTextura = regionTextura;
+        this.world = world;
+        setPosition(x, y);
+        setSize(regionTextura.getRegionWidth(), regionTextura.getRegionHeight());
+        item = world.add(new Item<GameObject>(this), getX(), getY(), getWidth(), getHeight());
     }
 
     public void left(boolean value) {
@@ -34,8 +45,13 @@ public class Player extends GameObject {
 
     @Override
     public void act(float dt) {
+        float targetX = this.getX();
+        float targetY = this.getY();
         if (quiereMoverseIzquierda && !quiereMoverseDerecha) {
-            this.setX(this.getX() - dt * VELX);
+
+            targetX -= dt * VELX;
+            Gdx.app.debug("AQUI", this.getX() + "--> " + targetX);
+            //this.setX(this.getX() - dt * VELX);
         } else if (quiereMoverseDerecha && !quiereMoverseIzquierda) {
             this.setX(this.getX() + dt * VELX);
         } else if (quiereMoverseArriba && !quiereMoverseAbajo) {
@@ -43,6 +59,8 @@ public class Player extends GameObject {
         } else if (quiereMoverseAbajo && !quiereMoverseArriba) {
             this.setY(this.getY() - dt * VELY);
         }
+        world.move(item, targetX, targetY, CollisionFilter.defaultFilter);
+
     }
 
     @Override

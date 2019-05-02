@@ -33,6 +33,7 @@ public class GameScreen implements Screen, InputProcessor {
     private TextureRegion ranaTextureJ2;
     private Player jugador1, jugador2;
     private Stage stage;
+    private World<GameObject> world;
 
     public GameScreen(final Ranero game){
         stage = new Stage(new FitViewport(100, 100));
@@ -48,12 +49,10 @@ public class GameScreen implements Screen, InputProcessor {
         ranaTextureJ1 = new TextureRegion(raneroSpriteSheet, 15, 18, 12, 13);
         ranaTextureJ2 = new TextureRegion(raneroSpriteSheet, 15, 50, 12, 13);
 
-        jugador1 = new Player(ranaTextureJ1);
-        jugador1.setPosition(100, 250);
-        jugador2 = new Player(ranaTextureJ2);
-        jugador2.setPosition(500, 250);
+        world = new World<GameObject>();
 
-        World<GameObject> world = new World<GameObject>();
+        jugador1 = new Player(ranaTextureJ1, 100, 250, world);
+        //jugador2 = new Player(ranaTextureJ2, 500, 250, world);
 
         Gdx.input.setInputProcessor(this);
         Gdx.app.setLogLevel(Application.LOG_DEBUG);
