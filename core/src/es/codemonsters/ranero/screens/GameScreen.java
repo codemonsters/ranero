@@ -12,8 +12,10 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.dongbat.jbump.World;
 
 import es.codemonsters.ranero.Ranero;
+import es.codemonsters.ranero.gameobjects.GameObject;
 import es.codemonsters.ranero.gameobjects.Player;
 
 public class GameScreen implements Screen, InputProcessor {
@@ -50,6 +52,9 @@ public class GameScreen implements Screen, InputProcessor {
         jugador1.setPosition(100, 250);
         jugador2 = new Player(ranaTextureJ2);
         jugador2.setPosition(500, 250);
+
+        World<GameObject> world = new World<GameObject>();
+
         Gdx.input.setInputProcessor(this);
         Gdx.app.setLogLevel(Application.LOG_DEBUG);
         resetLevel();
