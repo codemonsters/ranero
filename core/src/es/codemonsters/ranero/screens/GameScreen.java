@@ -52,7 +52,7 @@ public class GameScreen implements Screen, InputProcessor {
         world = new World<GameObject>();
 
         jugador1 = new Player(ranaTextureJ1, 100, 250, world);
-        //jugador2 = new Player(ranaTextureJ2, 500, 250, world);
+        jugador2 = new Player(ranaTextureJ2, 500, 250, world);
 
         Gdx.input.setInputProcessor(this);
         Gdx.app.setLogLevel(Application.LOG_DEBUG);
@@ -151,28 +151,20 @@ public class GameScreen implements Screen, InputProcessor {
     @Override
     public boolean keyUp(int keycode) {
         if (keycode == Input.Keys.RIGHT) { // flechas de dirección
-            Gdx.app.debug("GameScreen", "keyDown: FLECHA DERECHA");
             jugador1.right(false);
         } else if (keycode == Input.Keys.UP) {
-            Gdx.app.debug("GameScreen", "keyDown: FLECHA ARRIBA");
             jugador1.up(false);
         } else if (keycode == Input.Keys.LEFT) {
-            Gdx.app.debug("GameScreen", "keyDown: FLECHA IZQUIERDA");
             jugador1.left(false);
         } else if (keycode == Input.Keys.DOWN) {
-            Gdx.app.debug("GameScreen", "keyDown: FLECHA ABAJO");
             jugador1.down(false);
         } else if (keycode == Input.Keys.W) { // ahora las letras
-            Gdx.app.debug("GameScreen", "keyDown: W");
             jugador2.up(false);
         } else if (keycode == Input.Keys.A) {
-            Gdx.app.debug("GameScreen", "keyDown: A");
             jugador2.left(false);
         } else if (keycode == Input.Keys.S) {
-            Gdx.app.debug("GameScreen", "keyDown: S");
             jugador2.down(false);
         } else if (keycode == Input.Keys.D) {
-            Gdx.app.debug("GameScreen", "keyDown: D");
             jugador2.right(false);
         }
         return true;

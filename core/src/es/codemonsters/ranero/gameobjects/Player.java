@@ -49,9 +49,9 @@ public class Player extends GameObject {
         float targetY = this.getY();
         if (quiereMoverseIzquierda && !quiereMoverseDerecha) {
 
-            targetX -= dt * VELX;
+
             Gdx.app.debug("AQUI", this.getX() + "--> " + targetX);
-            //this.setX(this.getX() - dt * VELX);
+            this.setX(this.getX() - dt * VELX);
         } else if (quiereMoverseDerecha && !quiereMoverseIzquierda) {
             this.setX(this.getX() + dt * VELX);
         } else if (quiereMoverseArriba && !quiereMoverseAbajo) {
