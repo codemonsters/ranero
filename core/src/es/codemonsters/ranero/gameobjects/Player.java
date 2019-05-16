@@ -5,13 +5,13 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.dongbat.jbump.CollisionFilter;
 import com.dongbat.jbump.Item;
+import com.dongbat.jbump.Response;
 import com.dongbat.jbump.World;
 
 public class Player extends GameObject {
 
     private static final float VELX = 200;
     private static final float VELY = VELX; //constantes de velocidad
-
     private TextureRegion regionTextura;
     private boolean quiereMoverseIzquierda, quiereMoverseDerecha, quiereMoverseArriba, quiereMoverseAbajo;
 
@@ -45,22 +45,20 @@ public class Player extends GameObject {
 
     @Override
     public void act(float dt) {
-        float targetX = this.getX();
-        float targetY = this.getY();
+        float targetX = 0;
+        float targetY = 0;
         if (quiereMoverseIzquierda && !quiereMoverseDerecha) {
-
-
-            Gdx.app.debug("AQUI", this.getX() + "--> " + targetX);
-            this.setX(this.getX() - dt * VELX);
+            targetX += -VELX;
         } else if (quiereMoverseDerecha && !quiereMoverseIzquierda) {
-            this.setX(this.getX() + dt * VELX);
+            targetX += VELX;
         } else if (quiereMoverseArriba && !quiereMoverseAbajo) {
-            this.setY(this.getY() + dt * VELY);
+            targetY += VELY;
         } else if (quiereMoverseAbajo && !quiereMoverseArriba) {
-            this.setY(this.getY() - dt * VELY);
-        }
-        world.move(item, targetX, targetY, CollisionFilter.defaultFilter);
+            targetY += -VELY;
 
+        }
+        Response.Result result = world.move(item, targetX * dt + this.getX(), targetY * dt + this.getY(), CollisionFilter.defaultFilter);
+        this.setPosition(result.goalX, result.goalY);
     }
 
     @Override
@@ -78,3 +76,5 @@ public class Player extends GameObject {
     }
 
 }
+
+

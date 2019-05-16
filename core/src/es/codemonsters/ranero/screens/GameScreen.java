@@ -52,7 +52,7 @@ public class GameScreen implements Screen, InputProcessor {
         world = new World<GameObject>();
 
         jugador1 = new Player(ranaTextureJ1, 100, 250, world);
-        jugador2 = new Player(ranaTextureJ2, 500, 250, world);
+        jugador2 = new Player(ranaTextureJ2, 300, 250, world);
 
         Gdx.input.setInputProcessor(this);
         Gdx.app.setLogLevel(Application.LOG_DEBUG);
@@ -66,7 +66,7 @@ public class GameScreen implements Screen, InputProcessor {
         }
         stage = new Stage(new FitViewport(ANCHO_DEL_MUNDO, ALTO_DEL_MUNDO));
         stage.addActor(jugador1);
-        stage.addActor(jugador1);
+        stage.addActor(jugador2);
     }
 
     @Override
