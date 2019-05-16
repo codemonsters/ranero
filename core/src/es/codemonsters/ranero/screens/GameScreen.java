@@ -15,6 +15,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.dongbat.jbump.World;
 
 import es.codemonsters.ranero.Ranero;
+import es.codemonsters.ranero.gameobjects.Bloque;
 import es.codemonsters.ranero.gameobjects.GameObject;
 import es.codemonsters.ranero.gameobjects.Player;
 
@@ -29,9 +30,9 @@ public class GameScreen implements Screen, InputProcessor {
 
     private SpriteBatch batch;
     private Texture raneroSpriteSheet;
-    private TextureRegion ranaTextureJ1;
-    private TextureRegion ranaTextureJ2;
+    private TextureRegion ranaTextureJ1, ranaTextureJ2, bloqueTexture;
     private Player jugador1, jugador2;
+    private Bloque bloque;
     private Stage stage;
     private World<GameObject> world;
 
@@ -48,11 +49,13 @@ public class GameScreen implements Screen, InputProcessor {
 
         ranaTextureJ1 = new TextureRegion(raneroSpriteSheet, 15, 18, 12, 13);
         ranaTextureJ2 = new TextureRegion(raneroSpriteSheet, 15, 50, 12, 13);
+        bloqueTexture = new TextureRegion(raneroSpriteSheet, 637, 16, 1, 1);
 
         world = new World<GameObject>();
 
         jugador1 = new Player(ranaTextureJ1, 100, 250, world);
         jugador2 = new Player(ranaTextureJ2, 300, 250, world);
+        bloque = new Bloque(bloqueTexture, 150, 250, 5, 5, world);
 
         Gdx.input.setInputProcessor(this);
         Gdx.app.setLogLevel(Application.LOG_DEBUG);
@@ -67,6 +70,7 @@ public class GameScreen implements Screen, InputProcessor {
         stage = new Stage(new FitViewport(ANCHO_DEL_MUNDO, ALTO_DEL_MUNDO));
         stage.addActor(jugador1);
         stage.addActor(jugador2);
+        stage.addActor(bloque);
     }
 
     @Override
