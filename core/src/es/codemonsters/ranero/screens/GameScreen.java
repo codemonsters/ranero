@@ -55,7 +55,7 @@ public class GameScreen implements Screen, InputProcessor {
 
         jugador1 = new Player(ranaTextureJ1, 100, 250, world);
         jugador2 = new Player(ranaTextureJ2, 300, 250, world);
-        bloque = new Bloque(bloqueTexture, 150, 250, 5, 5, world);
+        bloque = new Bloque(bloqueTexture, 0, 0, 10, 10, world);
 
         Gdx.input.setInputProcessor(this);
         Gdx.app.setLogLevel(Application.LOG_DEBUG);

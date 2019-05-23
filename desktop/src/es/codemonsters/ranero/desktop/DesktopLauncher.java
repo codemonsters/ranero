@@ -9,6 +9,7 @@ public class DesktopLauncher {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.width = 1200;
 		config.height = 700;
+		//config.addIcon("");
 		new LwjglApplication(new Ranero(), config);
 	}
 }
