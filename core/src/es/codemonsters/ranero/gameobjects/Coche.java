@@ -28,7 +28,6 @@ public class Coche extends GameObject {
     @Override
     public void draw(Batch batch, float parentAlpha) {
         batch.draw(regionTextura, getX(), getY());
-
     }
 
 
