@@ -30,11 +30,16 @@ public class Coche extends GameObject {
         batch.draw(regionTextura, getX(), getY());
 
     }
+
+
+    //No se usa
+    /*
     //@Override
     public void update() {
 
 
-    }
+    }*/
+
     @Override
     public void dispose() {
     }

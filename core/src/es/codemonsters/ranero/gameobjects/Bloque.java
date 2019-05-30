@@ -9,7 +9,7 @@ public class Bloque extends GameObject {
     private Item item;
     private TextureRegion regionTextura;
     private World world;
-    float h, w;
+    private float h, w;
 
 
     public Bloque(TextureRegion regionTextura, float x, float y, float h, float w, World world) {

@@ -81,7 +81,7 @@ public class GameScreen implements Screen, InputProcessor {
 
     }
 
-    public void resetLevel() {
+    private void resetLevel() {
         if (stage != null) {
             stage.dispose();
         }
