@@ -22,10 +22,8 @@ import es.codemonsters.ranero.gameobjects.Player;
 
 public class GameScreen implements Screen, InputProcessor {
 
-    public static final int ANCHO_DEL_MUNDO = 400;
-    public static final int ALTO_DEL_MUNDO = 300;
-
-    private final Ranero game;
+    private static final int ANCHO_DEL_MUNDO = 400;
+    private static final int ALTO_DEL_MUNDO = 300;
 
     private OrthographicCamera camera;
 
@@ -33,7 +31,7 @@ public class GameScreen implements Screen, InputProcessor {
     private Texture raneroSpriteSheet;
     private TextureRegion ranaTextureJ1, ranaTextureJ2, bloqueTexture, cocheTexture;
     private Player jugador1, jugador2;
-    private Bloque bloque;
+    private Bloque bloque1, bloque2, bloque3, bloque4;
     private Coche coche;
     private Stage stage;
     private World<GameObject> world;
@@ -41,7 +39,6 @@ public class GameScreen implements Screen, InputProcessor {
     public GameScreen(final Ranero game){
         stage = new Stage(new FitViewport(100, 100));
 
-        this.game = game;
         camera = new OrthographicCamera();
         camera.setToOrtho(false,800, 480);
         Gdx.gl.glClearColor(0,0,0, 1);
@@ -51,15 +48,21 @@ public class GameScreen implements Screen, InputProcessor {
 
         ranaTextureJ1 = new TextureRegion(raneroSpriteSheet, 15, 18, 12, 13);
         ranaTextureJ2 = new TextureRegion(raneroSpriteSheet, 15, 50, 12, 13);
-        bloqueTexture = new TextureRegion(raneroSpriteSheet, 637, 16, 1, 1);
+        bloqueTexture = new TextureRegion(raneroSpriteSheet, 253, 16, 1, 1);
         cocheTexture = new TextureRegion(raneroSpriteSheet, 125, 337, 16, 14);
 
         world = new World<GameObject>();
 
         jugador1 = new Player(ranaTextureJ1, 100, 250, world);
         jugador2 = new Player(ranaTextureJ2, 300, 250, world);
-        bloque = new Bloque(bloqueTexture, 0, 0, 10, 10, world);
         coche = new Coche(cocheTexture, 200, 200, 16, 14, world);
+
+        bloque1 = new Bloque(bloqueTexture, -1, 0, ALTO_DEL_MUNDO, 1, world);
+        bloque2 = new Bloque(bloqueTexture, 0, ALTO_DEL_MUNDO, 1, ANCHO_DEL_MUNDO, world);
+        bloque3 = new Bloque(bloqueTexture, ANCHO_DEL_MUNDO, 0, ALTO_DEL_MUNDO, 1, world);
+        bloque4 = new Bloque(bloqueTexture, 0, -1, 1, ANCHO_DEL_MUNDO, world);
+
+
 
         Gdx.input.setInputProcessor(this);
         Gdx.app.setLogLevel(Application.LOG_DEBUG);
@@ -74,8 +77,13 @@ public class GameScreen implements Screen, InputProcessor {
         stage = new Stage(new FitViewport(ANCHO_DEL_MUNDO, ALTO_DEL_MUNDO));
         stage.addActor(jugador1);
         stage.addActor(jugador2);
-        stage.addActor(bloque);
         stage.addActor(coche);
+
+        stage.addActor(bloque1);
+        stage.addActor(bloque2);
+        stage.addActor(bloque3);
+        stage.addActor(bloque4);
+
     }
 
     @Override
@@ -120,6 +128,12 @@ public class GameScreen implements Screen, InputProcessor {
         batch.dispose();
         raneroSpriteSheet.dispose();
         stage.dispose();
+
+        bloque1.dispose();
+        bloque2.dispose();
+        bloque3.dispose();
+        bloque4.dispose();
+
 
     }
 

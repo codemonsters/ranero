@@ -19,7 +19,7 @@ public class Bloque extends GameObject {
         this.w = w;
         setPosition(x, y);
         setSize(regionTextura.getRegionWidth(), regionTextura.getRegionHeight());
-        item = world.add(new Item<GameObject>(this), getX(), getY(), getWidth(), getHeight());
+        item = world.add(new Item<GameObject>(this), x, y, w, h);
     }
 
     @Override
