@@ -113,8 +113,7 @@ public class Player extends GameObject {
         else if (direccion == Direcciones.ABAJO){
         anguloRotacion = 180;
         }
-
-        batch.draw(regionesTextura.get(numRegionTexturaActual),getX(), getY(), 0f,0f, regionesTextura.get(numRegionTexturaActual).getRegionWidth(), regionesTextura.get(numRegionTexturaActual).getRegionHeight(), 1f,1f, anguloRotacion);
+        batch.draw(regionesTextura.get(numRegionTexturaActual),getX(), getY(), regionesTextura.get(numRegionTexturaActual).getRegionWidth()/2,regionesTextura.get(numRegionTexturaActual).getRegionHeight()/2, regionesTextura.get(numRegionTexturaActual).getRegionWidth(), regionesTextura.get(numRegionTexturaActual).getRegionHeight(), 1f,1f, anguloRotacion);
      }
 
     @Override
