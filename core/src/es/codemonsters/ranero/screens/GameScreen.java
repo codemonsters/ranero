@@ -32,7 +32,7 @@ public class GameScreen implements Screen, InputProcessor {
     private Texture raneroSpriteSheet;
     private TextureRegion bloqueTexture, cocheTexture;
     private Player jugador1, jugador2;
-    private Bloque bloque1, bloque2, bloque3, bloque4;
+    private Bloque muroIzquierdo, muroSuperior, muroDerecho, muroInferior;
     private Coche coche;
     private Stage stage;
     private World<GameObject> world;
@@ -68,12 +68,10 @@ public class GameScreen implements Screen, InputProcessor {
 
         coche = new Coche(cocheTexture, 200, 200, 16, 14, world);
 
-        bloque1 = new Bloque(bloqueTexture, 0, 0, ALTO_DEL_MUNDO, 1, world);
-        bloque2 = new Bloque(bloqueTexture, 0, ALTO_DEL_MUNDO - 1, 1, ANCHO_DEL_MUNDO, world);
-        bloque3 = new Bloque(bloqueTexture, ANCHO_DEL_MUNDO - 1, 1, ALTO_DEL_MUNDO, 1, world);
-        bloque4 = new Bloque(bloqueTexture, 1, 0, 1, ANCHO_DEL_MUNDO, world);
-
-
+        muroIzquierdo = new Bloque(bloqueTexture, -9, 0, ALTO_DEL_MUNDO, 10, world);  // muro izquierdo
+        muroSuperior = new Bloque(bloqueTexture, 0, ALTO_DEL_MUNDO - 1, 10, ANCHO_DEL_MUNDO, world);
+        muroDerecho = new Bloque(bloqueTexture, ANCHO_DEL_MUNDO - 1, 0, ALTO_DEL_MUNDO, 10, world);
+        muroInferior = new Bloque(bloqueTexture, 0, -9, 10, ANCHO_DEL_MUNDO, world);
 
         Gdx.input.setInputProcessor(this);
         Gdx.app.setLogLevel(Application.LOG_DEBUG);
@@ -90,10 +88,10 @@ public class GameScreen implements Screen, InputProcessor {
         stage.addActor(jugador2);
         stage.addActor(coche);
 
-        stage.addActor(bloque1);
-        stage.addActor(bloque2);
-        stage.addActor(bloque3);
-        stage.addActor(bloque4);
+        stage.addActor(muroIzquierdo);
+        stage.addActor(muroSuperior);
+        stage.addActor(muroDerecho);
+        stage.addActor(muroInferior);
 
     }
 
@@ -140,10 +138,10 @@ public class GameScreen implements Screen, InputProcessor {
         raneroSpriteSheet.dispose();
         stage.dispose();
 
-        bloque1.dispose();
-        bloque2.dispose();
-        bloque3.dispose();
-        bloque4.dispose();
+        muroIzquierdo.dispose();
+        muroSuperior.dispose();
+        muroDerecho.dispose();
+        muroInferior.dispose();
 
 
     }

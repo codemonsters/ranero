@@ -15,10 +15,15 @@ public class Player extends GameObject {
     public static final int ancho = 12;
     public static final int alto = 12;
     public static enum Direcciones {
-        ARRIBA,
-        DERECHA,
-        ABAJO,
-        IZQUIERDA
+        ARRIBA(0),
+        DERECHA(-90),
+        ABAJO(180),
+        IZQUIERDA(90);
+        public int angulo;
+        Direcciones(int angulo)
+        {
+            this.angulo = angulo;
+        }
     }
     private static final float VELX = 100;
     private static final float VELY = VELX; //constantes de velocidad
@@ -99,21 +104,8 @@ public class Player extends GameObject {
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
-        // TODO: rotarla si procede
-        // TODO: dibujarla desplazándola correctamente respecto al cuerpo
-        float anguloRotacion = 0;
-        if (direccion == Direcciones.DERECHA) {
-            anguloRotacion = -90;
-        } else if (direccion == Direcciones.ARRIBA){
-            anguloRotacion = 0;
-        }
-        else if (direccion == Direcciones.IZQUIERDA){
-        anguloRotacion = 90;
-        }
-        else if (direccion == Direcciones.ABAJO){
-        anguloRotacion = 180;
-        }
-        batch.draw(regionesTextura.get(numRegionTexturaActual),getX(), getY(), regionesTextura.get(numRegionTexturaActual).getRegionWidth()/2,regionesTextura.get(numRegionTexturaActual).getRegionHeight()/2, regionesTextura.get(numRegionTexturaActual).getRegionWidth(), regionesTextura.get(numRegionTexturaActual).getRegionHeight(), 1f,1f, anguloRotacion);
+        batch.draw(regionesTextura.get(numRegionTexturaActual),getX(), getY(), regionesTextura.get(numRegionTexturaActual).getRegionWidth()/2,regionesTextura.get(numRegionTexturaActual).getRegionHeight()/2, regionesTextura.get(numRegionTexturaActual).getRegionWidth(), regionesTextura.get(numRegionTexturaActual).getRegionHeight(), 1f,1f, direccion.angulo);
+        // TODO: Dibujar un rectángulo para tener una referencia visual de los bordes del cuerpo durante las colisiones
      }
 
     @Override
