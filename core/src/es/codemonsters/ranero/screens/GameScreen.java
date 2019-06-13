@@ -23,8 +23,8 @@ import es.codemonsters.ranero.gameobjects.Player;
 
 public class GameScreen implements Screen, InputProcessor {
 
-    private static final int ANCHO_DEL_MUNDO = 400;
-    private static final int ALTO_DEL_MUNDO = 300;
+    public static final int ANCHO_DEL_MUNDO = 400;
+    public static final int ALTO_DEL_MUNDO = 300;
 
     private OrthographicCamera camera;
 
@@ -48,7 +48,7 @@ public class GameScreen implements Screen, InputProcessor {
         raneroSpriteSheet = new Texture("raneroSpriteSheet.png");
 
         bloqueTexture = new TextureRegion(raneroSpriteSheet, 253, 16, 1, 1);
-        cocheTexture = new TextureRegion(raneroSpriteSheet, 125, 337, 16, 14);
+        cocheTexture = new TextureRegion(raneroSpriteSheet, 13, 337, 14, 16);
 
         world = new World<GameObject>();
 
@@ -66,7 +66,7 @@ public class GameScreen implements Screen, InputProcessor {
         regionesTexturaJugador2.add(new TextureRegion(raneroSpriteSheet, 40, 50, 10, 14));
         jugador2 = new Player(300, 250, Player.Direcciones.IZQUIERDA, regionesTexturaJugador2, world);
 
-        coche = new Coche(cocheTexture, 200, 200, 16, 14, world);
+        coche = new Coche(cocheTexture, 150, -16, 16, 14, world);
 
         muroIzquierdo = new Bloque(bloqueTexture, -9, 0, ALTO_DEL_MUNDO, 10, world);  // muro izquierdo
         muroSuperior = new Bloque(bloqueTexture, 0, ALTO_DEL_MUNDO - 1, 10, ANCHO_DEL_MUNDO, world);

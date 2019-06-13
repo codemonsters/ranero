@@ -39,7 +39,7 @@ public class MenuScreen implements Screen {
         }
         game.fontBig.draw(game.batch, "RANERO", 430f, 600f);
 
-        game.fontMedium.draw(game.batch, "Pulsa disparo para empezar", 330f, 400f);
+        game.fontMedium.draw(game.batch, "Pulsa espacio para empezar", 330f, 400f);
         game.batch.end();
     }
 

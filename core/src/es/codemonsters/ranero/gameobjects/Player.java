@@ -1,12 +1,12 @@
 package es.codemonsters.ranero.gameobjects;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
+import com.dongbat.jbump.Collision;
 import com.dongbat.jbump.CollisionFilter;
+import com.dongbat.jbump.Collisions;
 import com.dongbat.jbump.Item;
 import com.dongbat.jbump.Response;
 import com.dongbat.jbump.World;
@@ -85,11 +85,20 @@ public class Player extends GameObject {
             quiereMoverse = true;
             direccion = Direcciones.ABAJO;
         }
-        Response.Result result = world.move(item, this.getX() + targetX * dt, this.getY() + targetY * dt, CollisionFilter.defaultFilter);
-        this.setPosition(result.goalX, result.goalY);
 
         // Actualizamos la región que utilizamos para dibujar la rana
         if (quiereMoverse) {
+            Response.Result result = world.move(item, this.getX() + targetX * dt, this.getY() + targetY * dt, CollisionFilter.defaultFilter);
+            Collisions col = result.projectedCollisions;
+            for(int i = 0; i < col.size(); i++)
+            {
+                Collision collision = col.get(i);
+                if(collision.other.userData instanceof Coche)
+                {
+                    Gdx.app.debug("Colisiones", "Accidente de coche");
+                }
+            }
+            this.setPosition(result.goalX, result.goalY);
             if (tiempoMostrandoLaMismaTextura > 0.1) {
                 tiempoMostrandoLaMismaTextura = 0;
                 numRegionTexturaActual++;
