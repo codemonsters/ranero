@@ -12,9 +12,10 @@ import com.dongbat.jbump.Response;
 import com.dongbat.jbump.World;
 
 public class Player extends GameObject {
-    public static final int ancho = 12;
-    public static final int alto = 12;
-    public static enum Direcciones {
+    private static final int ancho = 12;
+    private static final int alto = 12;
+
+    public enum Direcciones {
         ARRIBA(0),
         DERECHA(-90),
         ABAJO(180),
@@ -25,6 +26,7 @@ public class Player extends GameObject {
             this.angulo = angulo;
         }
     }
+
     private static final float VELX = 100;
     private static final float VELY = VELX; //constantes de velocidad
     private Array<TextureRegion> regionesTextura;

@@ -19,6 +19,7 @@ import es.codemonsters.ranero.Ranero;
 import es.codemonsters.ranero.gameobjects.Bloque;
 import es.codemonsters.ranero.gameobjects.Coche;
 import es.codemonsters.ranero.gameobjects.GameObject;
+import es.codemonsters.ranero.gameobjects.Mosca;
 import es.codemonsters.ranero.gameobjects.Player;
 
 public class GameScreen implements Screen, InputProcessor {
@@ -35,6 +36,9 @@ public class GameScreen implements Screen, InputProcessor {
     private Bloque muroIzquierdo, muroSuperior, muroDerecho, muroInferior;
     private Coche coche;
     private Stage stage;
+
+    private Array<Mosca> moscas;
+
     private World<GameObject> world;
 
     public GameScreen(final Ranero game){
@@ -73,6 +77,13 @@ public class GameScreen implements Screen, InputProcessor {
         muroDerecho = new Bloque(bloqueTexture, ANCHO_DEL_MUNDO - 1, 0, ALTO_DEL_MUNDO, 10, world);
         muroInferior = new Bloque(bloqueTexture, 0, -9, 10, ANCHO_DEL_MUNDO, world);
 
+        moscas = new Array<Mosca>();
+
+        TextureRegion regionTexturaMosca = new TextureRegion(raneroSpriteSheet, 79, 180, 11, 9);
+        for (int y = (ALTO_DEL_MUNDO / 6) + regionTexturaMosca.getRegionHeight() / 2 ; y < ALTO_DEL_MUNDO; y += ALTO_DEL_MUNDO / 6) {
+            moscas.add(new Mosca(regionTexturaMosca, 50, y, 11, 9, jugador1, world));
+        }
+
         Gdx.input.setInputProcessor(this);
         Gdx.app.setLogLevel(Application.LOG_DEBUG);
         resetLevel();
@@ -92,6 +103,10 @@ public class GameScreen implements Screen, InputProcessor {
         stage.addActor(muroSuperior);
         stage.addActor(muroDerecho);
         stage.addActor(muroInferior);
+
+        for (Mosca mosca:moscas) {
+            stage.addActor(mosca);
+        }
 
     }
 
@@ -138,12 +153,17 @@ public class GameScreen implements Screen, InputProcessor {
         raneroSpriteSheet.dispose();
         stage.dispose();
 
+        jugador1.dispose();
+        jugador2.dispose();
+
         muroIzquierdo.dispose();
         muroSuperior.dispose();
         muroDerecho.dispose();
         muroInferior.dispose();
 
-
+        for (Mosca mosca:moscas) {
+            mosca.dispose();
+        }
     }
 
     @Override
