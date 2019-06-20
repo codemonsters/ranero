@@ -150,28 +150,28 @@ public class GameScreen implements Screen, InputProcessor {
     public boolean keyDown(int keycode) {
         if (keycode == Input.Keys.RIGHT) { // flechas de dirección
             Gdx.app.debug("GameScreen", "keyDown: FLECHA DERECHA");
-            jugador1.right(true);
+            jugador2.right(true);
         } else if (keycode == Input.Keys.UP) {
             Gdx.app.debug("GameScreen", "keyDown: FLECHA ARRIBA");
-            jugador1.up(true);
+            jugador2.up(true);
         } else if (keycode == Input.Keys.LEFT) {
             Gdx.app.debug("GameScreen", "keyDown: FLECHA IZQUIERDA");
-            jugador1.left(true);
+            jugador2.left(true);
         } else if (keycode == Input.Keys.DOWN) {
             Gdx.app.debug("GameScreen", "keyDown: FLECHA ABAJO");
-            jugador1.down(true);
+            jugador2.down(true);
         } else if (keycode == Input.Keys.W) { // ahora las letras
             Gdx.app.debug("GameScreen", "keyDown: W");
-            jugador2.up(true);
+            jugador1.up(true);
         } else if (keycode == Input.Keys.A) {
             Gdx.app.debug("GameScreen", "keyDown: A");
-            jugador2.left(true);
+            jugador1.left(true);
         } else if (keycode == Input.Keys.S) {
             Gdx.app.debug("GameScreen", "keyDown: S");
-            jugador2.down(true);
+            jugador1.down(true);
         } else if (keycode == Input.Keys.D) {
             Gdx.app.debug("GameScreen", "keyDown: D");
-            jugador2.right(true);
+            jugador1.right(true);
         }
         return true;
     }
@@ -179,21 +179,21 @@ public class GameScreen implements Screen, InputProcessor {
     @Override
     public boolean keyUp(int keycode) {
         if (keycode == Input.Keys.RIGHT) { // flechas de dirección
-            jugador1.right(false);
-        } else if (keycode == Input.Keys.UP) {
-            jugador1.up(false);
-        } else if (keycode == Input.Keys.LEFT) {
-            jugador1.left(false);
-        } else if (keycode == Input.Keys.DOWN) {
-            jugador1.down(false);
-        } else if (keycode == Input.Keys.W) { // ahora las letras
-            jugador2.up(false);
-        } else if (keycode == Input.Keys.A) {
-            jugador2.left(false);
-        } else if (keycode == Input.Keys.S) {
-            jugador2.down(false);
-        } else if (keycode == Input.Keys.D) {
             jugador2.right(false);
+        } else if (keycode == Input.Keys.UP) {
+            jugador2.up(false);
+        } else if (keycode == Input.Keys.LEFT) {
+            jugador2.left(false);
+        } else if (keycode == Input.Keys.DOWN) {
+            jugador2.down(false);
+        } else if (keycode == Input.Keys.W) { // ahora las letras
+            jugador1.up(false);
+        } else if (keycode == Input.Keys.A) {
+            jugador1.left(false);
+        } else if (keycode == Input.Keys.S) {
+            jugador1.down(false);
+        } else if (keycode == Input.Keys.D) {
+            jugador1.right(false);
         }
         return true;
     }
